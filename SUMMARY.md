@@ -11,4 +11,8 @@
 * [실습\) 과일가게와 장난감가게](chap-07.md)
 * [07. 배열 \(Array\)](07.-array.md)
 * [08. 프로토타입\(Prototype\)](08.-prototype.md)
+* [09. 호이스팅 \(Hoisting\)](09.-hoisting.md)
+* [10. 스코프 \(Scope\)](10.-scope.md)
+* [11. 클로저 \(Closure\)](11.-closure.md)
+* [12. 모듈 패턴 \(Module pattern\)](12.-module-pattern.md)
 

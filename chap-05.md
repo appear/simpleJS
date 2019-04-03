@@ -40,6 +40,45 @@ function 치킨집(){
 
 이처럼 자신이 맡은 일만 수행할 수 있도록 그룹화 시켜주는 것이 함수 \(Function\) 입니다.
 
+#### Return 
+
+함수를 이용하면 아래 코드와 같이 내부의 값을 밖으로 던져 줄 수 있습니다.
+
+```javascript
+function foo () {
+  return 'hello'
+}
+var text = foo()
+```
+
+> 실습\) 치킨 가게를 만들어 보아요
+
+```javascript
+function order(){ 
+  console.log('주문을 받습니다.')
+  return '치킨'
+}
+
+function cooking(chicken){ 
+  console.log(chicken +'을 받아 요리를 만듭니다.')
+  return '완성된' + chicken
+}
+
+function delivery(food){ 
+  console.log(food + '을 받아 배달을 합니다.')
+  return food + '을 배달 완료!'
+}
+
+function chickenShop(){
+  var ingredients = order()
+  var food = cooking(ingredients)
+  var status = delivery(food)
+  console.log('status', status) // 치킨을 배달 완료!
+}
+
+chickenShop() // run
+```
+
 ### 함수를 쓰면 왜 좋을까요 ?
 
 **첫번째**는 위에서 설명드린 **그룹화** 또는 **모듈화**가 가능해집니다. 관련된 함수끼리 묶어 놓을 수 있기 때문에 코드의 **유지보수성**, **가독성** 등이 올라갑니다.
@@ -185,4 +224,50 @@ foo 라는 변수는 할당된 함수를 가리키는 **참조 값**을 저장�
 >
 > +, -, \*, / 을 해주는 함수를 만들어 보세요  
 > 자신의 성과 이름을 받아 출력해주는 함수를 만들어보세요
+
+#### Arguments 
+
+a 와 b 를 더해주는 함수가 있습니다. 
+
+```javascript
+function add(a, b) {
+  return a + b
+}
+```
+
+요구사항이 변경되어 3가지 수를 합하는 함수가 필요할때는 어떻게 해야될까요 ?
+
+```javascript
+function add(a, b, c) {
+  return a + b + c
+}
+```
+
+요렇게 만들어야 할까요 ..? 물론 가능하지만 나중을 생각한다면 좋은 방법은 아닌것 같습니다.
+
+이 때 이용할 수 있는 것이 arguments 입니다. arguments 란 우리가 함수에 넘긴 인자에 대한 정보를 가지고 있습니다.
+
+```javascript
+function foo() {
+	console.log(arguments)
+}
+
+foo(1,2,3,4,5) // Arguments(5) [1, 2, 3, 4, 5, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+```
+
+foo 에 매개변수를 지정해주지 않았지만 `Arguments` 는 매개변수에 대한 정보를 알고 있습니다. 아직 배우지 않았지만 이 친구는 like array 라 부르는 유사 배열입니다. 기본 array 와는 성질이 다릅니다.
+
+```javascript
+function foo() {
+	var result = 0
+	for(var i = 0; i < arguments.length; i += 1){ 
+		result += arguments[i]
+	}
+    console.log('총 합:', result)
+}
+
+foo(1,2,3,4,5) // 15 
+```
+
+Arguments 를 이용하면 매개변수에 묶이지 않고 유연하게 대처 할 수 있습니다.
 

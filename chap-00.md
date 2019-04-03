@@ -83,5 +83,35 @@ Runtime time Javascript 즉 Node.js 의 등장으로 Javascript 세계에도 Bun
 
 virtual DOM \(가상돔\) 이란 상태에 따라 변화되는 UI 의 상태를 Object 형태의 DOM Tree 를 만들어 메모리에 저장하고 실제 DOM 과 동기화 시키는 방식의 프로그래밍 개념입니다.  
 
+* 참고자료: [https://www.youtube.com/watch?v=BYbgopx44vo](https://www.youtube.com/watch?v=BYbgopx44vo) 
+
+### Component  <a id="component"></a>
+
+jQuery 시절에 아래의 페이지를 구성해야 했다면 하나의 html 파일을 만들고 그 안에 markup 태그와 css 를 넣고 전체 동작에 따른 js 파일을 작성해주어야 했을 겁니다. 페이지의 규모가 커질수록 html 구조가 복잡해짐에 따라 style 관리가 힘들어지고 js 파일의 규모가 커질수록 모듈 관리 또한 힘들었습니다. Modern Front 의 라이브러리와 프레임워크들은 Component 라는 개념을 도입하여 위와 같은 문제를 해결하였습니다. 아래의 페이지를 예시로 들어보겠습니다. 상단의 로고, 중앙의 타이틀과 버튼, 이미지 들을 각각 조각\(**component**\) 들로 분리하여 해당 페이지에서 레고를 조립하듯 끼워 맞춥니다.
+
+* Logo.js \(상단 로고만을 위한 html, css, js, image 를 관리한다\)
+* Title.js \(중앙 타이틀 텍스트만을 위한 html, css, js 를 관리한다\)
+* Buttons.js \(버튼에 대한 html, css, js 를 관리한다\)
+
+해당 Component 에서는 관심사에 따른 View 만 관리하면 되기 때문에 규모가 커지더라도 유연하게 대처할 수 있습니다.
+
+![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-LYGyJlfT4aHSW1TgIhy%2F-LYGyavI6j95eFiGxste%2F-LYH2dzRo_T9G8ynoPBk%2Fmain.PNG?alt=media&token=42f140f4-8717-4105-8d3b-2759206f0c8b)
+
+
+
+### SPA  \(Single Page Application\)
+
+SPA 란 말 그대로 단일 페이지 어플리케이션 입니다. 하나의 html 파일과 단일 JS 파일로 이루어져 있습니다.  
+최초 로딩 시에 html 파일과 JS 을 미리 로딩하여 페이지 전환이 될 경우 페이지를 이동하는 것이 아닌 전환될 부분만 그려줍니다.
+
+아래의 이미지를 보면 페이지를 이동하였으나 페이지 전체가 새로 로딩되는 것이 아니라 보여줘야 할 페이지의 부분을 새로 그려주면 페이지를 전환 같은 효과를 보여줍니다.  
+
+
+![](.gitbook/assets/webtoon.gif)
+
+SPA 로 페이지를 구성하게 되면 빠른 페이지변환과 반응성, 화면전환 애니메이션 등 사용자 친화적인 부분과 적은 트래픽 양을 누릴 수 있습니다.  
+하지만 장점만 있는 것은 아닙니다. 위에서 말씀드렸던 것 처럼 최초 로딩 시에 JS 파일을 가져와야 하는데 JS 의 사이즈가 커수록 초기 로딩속도는 느려집니다. \(이를 해결하기 위해 뒤에서 code-splitting 에 대하여 알아볼 예정입니다\)  
+또,  검색엔진이 해당 페이지를 크롤 했을 때는 페이지가 그려지기 전이기 때문에 텅 빈 div 태그만 노출됩니다. 이를 해결하기 위해서는 meta tag 를 이용하거나 nuxt 같은 서버사이드 렌더링 프레임워크를 이용해야 합니다.
+
 
 

@@ -45,13 +45,14 @@ console.log("a");
 ```
 
 그러면 아래와 같이 eslint 룰에 어긋나는 것들에 빨간 줄이 그어집니다.   
-Standard 에서는 singlequote 를 사용하도록 권장하는데 doublequote 를 사용했기 때문에 나는 경고입니다.
+Standard 에서는 singlequote 를 사용하도록 권장하는데 doublequote 를 사용했기 때문에 나는 경고입니다.  
+
 
 ![](../.gitbook/assets/image%20%2811%29.png)
 
 singlequote 로 수정한 후 기존 경고는 사라지고 새로운 경고가 나왔습니다. semicolon 을 지우라는 경고와 한줄의 공백을 두라는 경고입니다. 먼저 semicolon  을 제거해보겠습니다.
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/image%20%2814%29.png)
 
 이제 하나의 경고만 남게되었습니다. 만약 이 경고를 무시하고 싶다거나 경고가 아닌 에러의 level 로 올리고 싶다면 .eslintrc 에서 rule 을 설정해주면됩니다.
 

@@ -286,3 +286,30 @@ foo(1,2,3,4,5) // 15
 
 Arguments 를 이용하면 매개변수에 묶이지 않고 유연하게 대처 할 수 있습니다.
 
+**Rest parameter**
+
+ES6 에는 Arguments 보다 조금 더 스마트한 Rest parameter 라는 녀석이 있습니다.
+
+```javascript
+function foo(a, ...rest) {
+	console.log(a) // 1
+	console.log(rest) // [2, 3, 4, 5] a 를 제외한 나머지 
+}
+
+foo(1,2,3,4,5) // 15 
+```
+
+> 실습\) Rest parameter 와 Arguments 를 이용하여 아래의 함수를 만들어주세요
+
+```javascript
+function add(){}
+function sub(){}
+function mul(){}
+function mod(){}
+
+calc(add, 1, 2, 3, 4, 5) => 1 ~ 5 를 더한 값
+calc(sub, 1, 2, 3, 4, 5) => 1 ~ 5 를 뺀 값
+```
+
+
+

@@ -22,4 +22,5 @@
 ## 부록
 
 * [ESLint](undefined/eslint.md)
+* [Intersection Observer \(Lazy Loading\)](undefined/intersection-observer-lazy-loading.md)
 

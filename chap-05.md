@@ -79,6 +79,44 @@ function chickenShop(){
 chickenShop() // run
 ```
 
+> 실습\) Slide 기능 구현
+
+```javascript
+var current = 0
+var max = 10
+
+function next() {
+  if (!isNext()) {
+    console.log('다음 페이지가 없습니다.')
+    return
+  }
+  current += 1
+  console.log(`next = move to: ${current}`)
+}
+
+function prev() {
+  if (!isPrev()) {
+    console.log('이전 페이지가 없습니다.')
+    return
+  }
+  current -= 1
+  console.log(`prev = move to: ${current}`)
+}
+
+function moveToPoint(point) {
+  current = point
+}
+
+function isNext() {
+  return current + 1 <= max
+}
+
+function isPrev() {
+  return current - 1 >= 0
+}
+
+```
+
 ### 함수를 쓰면 왜 좋을까요 ?
 
 **첫번째**는 위에서 설명드린 **그룹화** 또는 **모듈화**가 가능해집니다. 관련된 함수끼리 묶어 놓을 수 있기 때문에 코드의 **유지보수성**, **가독성** 등이 올라갑니다.
@@ -317,4 +355,6 @@ calc(sub, 1, 2, 3, 4, 5) => 1 ~ 5 를 뺀 값
 function max(){}
 max(1,2,3, 'a', 'b', 4,5) => return 5
 ```
+
+
 

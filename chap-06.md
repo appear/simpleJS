@@ -65,7 +65,7 @@ console.log(obj.constructor === Object);
 
 // obj.key = value 의 형식으로 값을 추가할 수 있습니다.
 obj.name = 'olaf';  
-obj.age = 26;
+obj.age = 27;
 ```
 
 > constructor는 해당 Object가 어떤 Object를 상속 받았는지를 판단할 수 있게 알려주는 속성입니다.
@@ -105,23 +105,23 @@ var obj = {}; // 리터럴 방식으로 빈객체 생성
 console.log(typeof obj); // object
 // 이렇게 속성들을 추가 할 수 있어요, 그럼 new Object랑 같은거 아니에요 ? 
 obj.name = 'olaf';
-obj.age = 26;
+obj.age = 27;
 
 // 리터럴 방식을 이용하면 아래와 같은 표현도 가능합니다.
 // 이렇게 한번에 넣어줄 수 있어요. 속성들이 한눈에 보이죠 ?
 var person = { 
   name : 'olaf',
-  age : 26,
+  age : 27,
   getName : function(){ // 메서드도 표현할 수 있어요
     // this 는 아직 모르셔도되요 자기 자신이라고만 알아주세요
     console.log(this.name); // olaf
   }
 };
 console.log(typeof person); // object
-console.log(person); // { name: 'olaf', age: 26}
+console.log(person); // { name: 'olaf', age: 27}
 // 속성 사용법
 console.log(person.name); // olaf key 값으로 접근할 수 있습니다.
-console.log(person.age); // 26 
+console.log(person.age); // 27
 console.log(person.getName()); // 메서드 실행
 ```
 
@@ -236,7 +236,7 @@ console.log(obj['name-first']);
 ```javascript
 var person = {
   name : 'olaf',
-  age : 26
+  age : 27
 };
 var key;
 for (key in person) {
@@ -244,7 +244,7 @@ for (key in person) {
 }
 /*
   name : olaf,
-  age : 26
+  age : 27
 */
 ```
 

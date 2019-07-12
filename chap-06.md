@@ -192,6 +192,10 @@ var Person = function(name){
 var obj = {}; // 빈객체
 obj.name = "olaf";
 console.log(obj); // Object {name: "olaf"}
+
+// 해체 할당자
+var obj2 = { ...obj, age: 27 } // ...obj 란 obj 를 기존의 주소와 다른 새로운 객체를 만듭니다
+console.log(obj2) // name: olaf, age: 27
 ```
 
 #### 삭제 <a id="&#xC0AD;&#xC81C;"></a>
@@ -229,6 +233,13 @@ var obj = {
 console.log(obj.name-first); 
 // 이런식으로 해주시면됩니다.
 console.log(obj['name-first']);
+
+
+// 해체 할당자
+var obj = { a: 10 } 
+var { a } = obj
+console.log(a) // 10
+
 ```
 
 #### for in 을 이용한 탐색
@@ -246,6 +257,42 @@ for (key in person) {
   name : olaf,
   age : 27
 */
+```
+
+#### Object Keys 를 이용한 탐색 
+
+```javascript
+var obj = { a: 10, b: 20, c: 30 }
+
+Object.keys(obj) // ["a", "b", "c"]
+
+Object.keys(obj).forEach(function(key) {
+  console.log(obj[key]) 
+}) // 10, 20, 30
+```
+
+#### Object Values 
+
+```javascript
+var obj = { a: 10, b: 20, c: 30 }
+
+Object.values(obj) // [10, 20, 30]
+
+Object.values(obj).forEach(function(value) {
+  console.log(value) 
+})
+```
+
+#### Object entries
+
+```javascript
+var obj = { a: 10, b: 20, c: 30 }
+
+Object.entries(obj) //  ["a", 10], ["b", 20], ["c", 30]
+
+Object.entries(obj).forEach(function([key, value]) {
+	console.log(`${key}: ${value}`)
+}) // a: 10, b: 20, c: 30
 ```
 
 ### 어떻게 사용하는거에요 ?
@@ -306,4 +353,6 @@ boxMaker(option); // 박스 만들기
 > 8. 최종 Object를 탐색하여 console에 찍는다.
 
 정답 : [https://jsfiddle.net/xbmjL2vc/](https://jsfiddle.net/xbmjL2vc/)
+
+
 

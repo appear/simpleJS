@@ -54,13 +54,13 @@ Object는 뒤에서 조금 더 자세하게 다룰 예정입니다.
 선언을 해줄때는 편하지만 타입이 선언되지않다보니 사용시에 타입체크를 해줘야하는 불편함이 있을 수 있습니다. 이를 보완한것이 [타입스크립트](https://hyunseob.github.io/2016/09/25/typescript-introduction/) 입니다.
 
 ```javascript
-var foo = 25;    // foo 는 이제 Number 
-var foo = "apepar"; // foo 는 이제 String 
+var foo = 27;    // foo 는 이제 Number 
+var foo = "olaf"; // foo 는 이제 String 
 var foo = true;  // foo 는 이제 Boolean 
 
 // ex) Java는 변수 선언시 타입을 정해줘야합니다.
-public string name = "appear";
-private int age = 25;
+public string name = "olaf";
+private int age = 27;
 ```
 
 ### 변수
@@ -69,7 +69,7 @@ private int age = 25;
 
 > **변수란**  
 > 나중에 쓰기위해 값을 담아놓는 공간, 메모리상의 주소를 의미합니다.  
-> 조금더 사용하기 쉽게 var name = appear 같은 name \(식별자\) 를 사용합니다.
+> 조금더 사용하기 쉽게 var name = olaf 같은 name \(식별자\) 를 사용합니다.
 
 * 변수에 값을 대입하는것을 초기화라고 부릅니다.
 * 낙타 표기법이라 불리는 **camelCase** 를 사용합니다.  ex\) firstName 같이 첫번째 단어는 소문자 다음 단어부터는 첫글자를 대문자로 사용합니다.
@@ -83,6 +83,10 @@ var Undefined = undefined; // 언디파인드
 var Array = []; // 배열
 var Obj = {}; // 객체
 var Func = function() {}; // 함수
+
+// let, const 로도 변수를 선언 할 수 있습니다.
+let num = 10
+const num = 10
 ```
 
 그렇다면 변수를 실제로 어떻게 사용할까요?
@@ -99,5 +103,7 @@ var Func = function() {}; // 함수
 var num = 10 + 10 
 // num 에는 이미 20이 들어 있기 때문에 20 + 5 라는 연산을 할 수 있었어요
 var num2 = num + 5
+
+num = num += 10
 ```
 

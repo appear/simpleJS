@@ -6,22 +6,14 @@ description: '여태까지 배운 내용들을 이용하여 과일가게와 장�
 
 ![body](.gitbook/assets/body%20%282%29.png)
 
-## 과일가게와 장난감가게
+## 과일가게
 
 ### 문제
 
 한 마을에는 **과일 가게**와 **장난감 가게**가 있습니다.  
 **과일 가게**에는 사과와 파인애플을 팔며 **사과**는 **200원**, **파인애플**은 **500원**에 판매되고 있습니다.  
-과일의 **재고는 10개씩**으로 동일합니다.
-
-**장난감 가게**에는 미니언즈 피규어와 머리띠를 판매합니다.  
-미니언즈 피규어는 **1000원** 머리띠는 **500원**에 판매가되고 있고 각각 **재고는 각각 10개**로 동일합니다.
-
-**짱구**는 마을 주민입니다. 짱구는 **3000원의 용돈**이 있습니다.  
-과일 가게에서 사과를 2개 구매하고 파인애플을 1개 구매한 후  
-장난감 가게에서 미니언즈 피규어 1개 머리띠 1 개를 구매하려고 합니다.
-
-물건을 다 산 후 짱구가 구매한 물품들을 나열하여 출력해주세요.  
+과일의 **재고는 10개씩**으로 동일합니다.  
+  
 또 남은 용돈을 얼마인지 계산하여 출력해주세요
 
 ### 풀이
@@ -32,21 +24,12 @@ description: '여태까지 배운 내용들을 이용하여 과일가게와 장�
 ```javascript
 var fruits = { // 과일가게를 만들 데이터
   apple: {
+    name: '사과',
     price: 200,
     stock: 10
   },
   pineapple: {
-    price: 500,
-    stock: 10
-  }
-}
-
-var toys = { // 장난감 가게를 만든 ㅔ이터
-  minions: {
-    price: 1000,
-    stock: 10
-  },
-  teddyBear: {
+    name: '파인애플',
     price: 500,
     stock: 10
   }
@@ -71,17 +54,41 @@ new Shop('과일 가게', fruits)
 판매하고있는 items 에서 넘겨받은 이름을 가진 객체를 가져와 재고에서 구매한 수량만큼 뺴줍니다.
 
 ```javascript
-function Shop(name, items) {
+function Shop(name, items) { // 가게이름, 아이템 데이터
   this.name = name;
   this.items = items;
-  /* 판매될 아이템이름과, 수량을 받는다 */
-  this.sellItem = function(name, qauntity) { // 이름, 구매수량
+
+  this.sell = function(name, qauntity) { // 이름, 구매수량
     var item = this.items[name] // name 이라는 이름을 가진 객체를 가져옵니다.
-    item.stock -= qauntity // 재고에서 구매수량만큼 빼줍니다.
+
+    if (!item) {
+      console.log('찾으시는 과일이 없습니다.')
+      return 
+    }
+
+    if(item.stock < qauntity) {
+      console.log(`${item.name} 의 재고가 부족합니다.`)
+      return 
+    }
+
     return { // 구매자가 지불해야될 가격과 구매한 아이템을 리턴해줍니다.
-      itemName: item.name,
-      price: item.price * qauntit
+      name: item.name,
+      price: item.price * qauntity,
+      qauntity: qauntity
     };
+  }
+  
+  this.setStock = function(name, qauntity) {
+    var item = this.items[name] 
+
+    if (!item) {
+      console.log('찾으시는 과일이 없습니다.')
+      return 
+    }
+
+    item.stock = item.stock -= qauntity // 판매에 성공한 갯수만큼 재고를 빼줍니다.
+
+    console.log(`${item.name} 의 재고가 ${item.stock} 으로 변경되었습니다`)
   }
 }
 ```
@@ -93,9 +100,9 @@ function Shop(name, items) {
 function User(name, money) {
   this.name = name;
   this.money = money;
-  this.receipt = [];
 }
-new User('olaf', 3000); // olaf 에게 3000원의 용돈을 줍니다.
+
+new User('olaf', 5000); // olaf 에게 3000원의 용돈을 줍니다.
 ```
 
 User 는 과일을 구매할 수 있습니다.
@@ -104,10 +111,21 @@ User 는 과일을 구매할 수 있습니다.
 function User(name, money) {
   this.name = name;
   this.money = money;
-  this.receipt = [];
-  this.buyItem = function(item) { // buyItem 은 아이템 이름과, 구매한 가격을 받습니다.
-    this.receipt.push(item.itemName); // 구매한 아이템은 영수증에 기록하고
+  
+  this.buy = function(item) { // buyItem 은 아이템 이름과, 구매한 가격을 받습니다.
+    
+    if (this.money < item.price) {
+      console.log(`${name} 을 구매하기에 돈이 부족합니다. 가격 :${item.price} 잔고: ${this.money}`)
+      return 
+    }
+
     this.money -= item.price; // 구매를 위해 지불한 돈만큼 자신의 돈에서 차감합니다.
+
+    console.log(`${item.name} 을 구매하였습니다. 남은 돈: ${this.money}`)
+    
+    return {
+      qauntity: item.qauntity // 구매를 성공한 수량을 리턴해줍니다.
+    }
   }
 }
 ```
@@ -116,78 +134,25 @@ function User(name, money) {
 
 ```javascript
 var fruitShop = new Shop('과일 가게', fruits); // 과일 가게 생성
-var toyShop = new Shop('장난감 가게'); // 장난감 가게 생성
+
 var user = new User('olaf', 5000);
 
-var buyApple = fruitShop.sellItem('apple', 3) // 사과 3개를 구매하였습니다.
-console.log('구매한 아이템', buyApple.itemName); // apple
-console.log('지불해야되는 돈', buyApple.price); // 600
-console.log('user가 사과를 구매했습니다.')
+var sellInfo = fruitShop.sell('apple', 3) // 사과 3개를 구매하였습니다.
 
-user.buyItem(buyApple); // olaf 가 가격을 지불합니다.
-console.log('사과 구매 후 user 정보')
-console.log('남은 용돈', user.money); // 남은 용돈 4400
-console.log('영수증', user.receipt); // [ 'apple' ]
+if (sellInfo) {
+  console.log('구매한 아이템', sellInfo.name); // apple
+  console.log('지불해야되는 돈', sellInfo.name); // 600
+  
+  const buyInfo = user.buy(sellInfo); // olaf 가 가격을 지불합니다.
 
-toyShop.sellItem('minions',  5); // 똑같이 장난감도 구매하면 되겠죠 :)
+  if(buyInfo) {
+    fruitShop.setStock('apple', buyInfo.qauntity) // 재고를 조정합니다.
+  }
+}
 ```
 
 User 는 구매자의 역할이고 Shop 들은 판매하는 입장입니다.  
 처음에는 이해하기 조금 어려울 수 있어요. 큰 흐름을 보려고하면 조금 더 이해가 수월할거에요
-
-### 예외처리
-
-프로그램을 만들보면 우리의 의도대로 동작하지 않는 경우가 분명히 발생합니다.
-
-위의 코드에서 Shop 의 sellItem 을 예로 들어보겠습니다.  
-sellItem 은 아이템의 이름과 수량을 받아서 판매를 하는 함수입니다. 그런데 가게의 아이템 재고보다 더 많은 수량을 구매자가 구매하길 원한다면 어떻게 될까요?
-
-```javascript
-this.sellItem = function(name, qauntity) { // 이름, 구매수량
-    var item = this.items[name] // name 이라는 이름을 가진 객체를 가져옵니다.
-    item.stock -= qauntity // 재고에서 구매수량만큼 빼줍니다.
-    return { // 구매자가 지불해야될 가격과 구매한 아이템을 리턴해줍니다.
-      itemName: item.name,
-      price: item.price * qauntit
-    };
- }
-```
-
-가게의 stock 은 - 가 되고 구매자는 수량대로 가격을 지불 하게됩니다. 그래서 우리는 재고보다 많은 수를 구매하고자 하면 구매를 막거나 현재 재고만큼 판매할 수 있도록 예외처리를 해줘야합니다.
-
-```javascript
-this.sellItem = function(name, qauntity) { // 이름, 구매수량
-    var item = this.items[name] // name 이라는 이름을 가진 객체를 가져옵니다.
-    if (qauntity > item.stock) { // 구매하고자 하는 수량이 재고보다 많다면 
-      var result = {
-        itemName: name,
-        price: item.price * item.stock // 현재있는 재고의 수량만큼 판매
-      }
-      item.stock = 0; // 재고를 0 으로 바꿔줘야겠죠 ?
-      return result
-    } else { // 구매하고자 하는 수량이 재고보다 작을 때 
-      item.stock -= qauntity // 재고에서 구매수량만큼 빼줍니다.
-      return { // 구매자가 지불해야될 가격과 구매한 아이템을 리턴해줍니다.
-        itemName: name,
-        price: item.price * qauntity
-      };
-    }
-  }
-```
-
-User 의 buyItem 도 예외처리가 필요합니다.  
-가진 용돈보다 과일의 구매 가격이 클 때 구매하지 못 하도록 예외처리를 해줘야합니다.
-
-```javascript
-this.buyItem = function(item) { // buyItem 은 아이템 이름과, 구매한 가격을 받습니다.
-    if (item.price > this.money) { // 과일 가격이 용돈보다 클 경우 
-      console.log('용돈이 부족합니다.');
-      return;
-    }
-    this.receipt.push(item.itemName); // 구매한 아이템은 영수증에 기록하고    
-    this.money -= item.price; // 구매를 위해 지불한 돈만큼 자신의 돈에서 차감합니다.  
- }
-```
 
 ### 마무리
 

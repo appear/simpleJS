@@ -335,6 +335,27 @@ var boxMaker = function(option) {
     }
 }
 boxMaker(option); // 박스 만들기
+
+
+// class 
+
+class BoxMaker {
+  constructor(option) {
+    this.width = option.width;
+    this.height = option.height;
+    this.color = option.color;
+
+    this.getColor = function(){
+        return this.color;
+    }
+  }
+}
+
+console.log(new BoxMaker({ 
+  width: 300,
+  height: 200,
+  color: '#fff'
+}).getColor())
 ```
 
 위처럼 같은 객체지만 만드는 방식에 따라 역할이 조금씩 달라집니다 :\)

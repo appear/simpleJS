@@ -140,9 +140,9 @@ var user = new User('olaf', 5000);
 var sellInfo = fruitShop.sell('apple', 3) // 사과 3개를 구매하였습니다.
 
 if (sellInfo) {
-  console.log('구매한 아이템', sellInfo.name); // apple
+  console.log('구매를 원하는 아이템', sellInfo.name); // apple
   console.log('지불해야되는 돈', sellInfo.name); // 600
-  
+   
   const buyInfo = user.buy(sellInfo); // olaf 가 가격을 지불합니다.
 
   if(buyInfo) {

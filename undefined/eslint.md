@@ -33,7 +33,7 @@ npm install now ? > Y
 
 install Y 를 해주셔야 Standard Lint 를 적용하기 위한 모듈들을 자동으로 받아줍니다.
 
-![.eslintrc](../.gitbook/assets/image%20%285%29.png)
+![.eslintrc](../.gitbook/assets/image%20%286%29.png)
 
 .eslinrc 파일이 eslint 설정 파일입니다. 룰을 추가하거나 여러가지 option 들을 설정할 수 있습니다.
 
@@ -48,15 +48,15 @@ console.log("a");
 Standard 에서는 singlequote 를 사용하도록 권장하는데 doublequote 를 사용했기 때문에 나는 경고입니다.  
 
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%2817%29.png)
 
 singlequote 로 수정한 후 기존 경고는 사라지고 새로운 경고가 나왔습니다. semicolon 을 지우라는 경고와 한줄의 공백을 두라는 경고입니다. 먼저 semicolon  을 제거해보겠습니다.
 
-![](../.gitbook/assets/image%20%2814%29.png)
+![](../.gitbook/assets/image%20%2822%29.png)
 
 이제 하나의 경고만 남게되었습니다. 만약 이 경고를 무시하고 싶다거나 경고가 아닌 에러의 level 로 올리고 싶다면 .eslintrc 에서 rule 을 설정해주면됩니다.
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%284%29.png)
 
 아래와 같이 해당 rule 의 level 을 0 으로 만들게되면 lint 는 이 rule 에 관해서는 신경쓰지 않습니다.
 
@@ -83,7 +83,7 @@ $ npx eslit "*.js"
 
 위의 명령어를 이용하여 lint 검사 결과를 알 수 있습니다.
 
-![](../.gitbook/assets/image%20%288%29.png)
+![](../.gitbook/assets/image%20%2814%29.png)
 
 ```bash
 $ npx eslint '*.js' --fix
@@ -114,7 +114,7 @@ module.exports = {
 
 VS code 마켓에서 prettier 플러그인을 설치해주세요
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%289%29.png)
 
 설치후 VS code 작업영역 설정 부분에 아래의 설정을 작성합니다.  
 윈도우의 경우 ctrl + , Mac 의 경우 Cmd + ,

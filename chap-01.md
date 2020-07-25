@@ -21,7 +21,8 @@ description: 자바스크립트를 다루기위한 가장 기초적인 문법을
 * **String**
 * **Symbol** \(ECMAScript 6에 추가\) : Symbol은 유일하고 변경 불가능한 \(immutable\) 기본값 \(primitive value\) 이다
 
-typeof를 이용하면 값의 타입을 알 수 있습니다. 아직은 new라든지 valueOf같은 함수는 모르셔도됩니다. 결과값만 봐주세요
+typeof 를 이용하면 값의 타입을 알 수 있습니다.   
+아직은 new라든지 valueOf같은 함수는 모르셔도됩니다. 결과값만 봐주세요
 
 ```javascript
 typeof true; //"boolean"
@@ -42,7 +43,7 @@ typeof (new Number(123)).valueOf(); //"number"
 
 ### Object \( 객체형, 참조형 \)
 
-기본본자료형 \(Primitives\) 을 **제외**한 나머지 값들 \( 배열, 함수, 정규표현식 등 \) 은 모두 객체입니다.
+기본 자료형 \(Primitives\) 을 **제외**한 나머지 값들 \( 배열, 함수, 정규표현식 등 \) 은 모두 객체입니다.
 
 Object는 뒤에서 조금 더 자세하게 다룰 예정입니다.
 
@@ -51,16 +52,16 @@ Object는 뒤에서 조금 더 자세하게 다룰 예정입니다.
 보통의 언어들과는 다르게 자바스크립트는 변수의 타입을 미리 선언할 필요가 없습니다.  
 타입은 프로그램이 처리되는 과정에서 자동으로 정해질거에요.  
 이를 느슨한 **데이터 타입** \(loosley data type\) 또는 동적 타입 언어라고 합니다.  
-선언을 해줄때는 편하지만 타입이 선언되지않다보니 사용시에 타입체크를 해줘야하는 불편함이 있을 수 있습니다. 이를 보완한것이 [타입스크립트](https://hyunseob.github.io/2016/09/25/typescript-introduction/) 입니다.
+선언을 해줄때는 편하지만 타입이 선언되지 않다 보니 사용시에 타입체크를 해줘야하는 불편함이 있을 수 있습니다. 이를 보완한것이 [타입스크립트](https://hyunseob.github.io/2016/09/25/typescript-introduction/) 입니다.
 
 ```javascript
-var foo = 27;    // foo 는 이제 Number 
+var foo = 28;    // foo 는 이제 Number 
 var foo = "olaf"; // foo 는 이제 String 
 var foo = true;  // foo 는 이제 Boolean 
 
 // ex) Java는 변수 선언시 타입을 정해줘야합니다.
 public string name = "olaf";
-private int age = 27;
+private int age = 28;
 ```
 
 ### 변수
@@ -83,6 +84,9 @@ var Undefined = undefined; // 언디파인드
 var Array = []; // 배열
 var Obj = {}; // 객체
 var Func = function() {}; // 함수
+var _name = 'olaf'
+var $name = 'olaf'
+var 이름 = 'olaf'
 
 // let, const 로도 변수를 선언 할 수 있습니다.
 let num = 10
@@ -105,5 +109,14 @@ var num = 10 + 10
 var num2 = num + 5
 
 num = num += 10
+```
+
+#### 주석
+
+comment 를 남길 때 사용합니다.
+
+```text
+// 한 줄 주석 
+/* 여러 줄 주석 */
 ```
 

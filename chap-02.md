@@ -53,6 +53,8 @@ console.log('안녕' + '하세요');
 var firstname = 'o'
 var lastname = 'laf'
 console.log(`${firstname}${lastname}`) // olaf
+
+// firstname.concat(lastname)
 ```
 
 ### **비교연산자**

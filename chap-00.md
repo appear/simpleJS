@@ -31,7 +31,7 @@ JQuery 같은 라이브러리의 등장으로 DOM을 쉽게 다룰 수 있어졌
 * 1997년 : DOM 제어를 이용하여 컨텐츠와 스타일의변화를 주는 것이 가능해졌다. IE4와 넷스케이프 등 동적 HTML제어가 등장하였습니다.
 * 1999년 : IE5에서 서버요청을 보내고 텍스트형식의 데이터를 받는것이 가능해졌습니다.
 * 2001년 : 더글락스 크락포드는 텍스트 형식으로 데이터를 저장하는 문법을 [JSON](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON)이라 칭하고 문서화했습니다.
-* 2005년 : 비동기 방식의 **Ajax**의 등장 대표적으로 Google Maps가 있다. **Ajax** 등장이후 **JSON**이 인기를 끌기시작했습니다. 결과적으로 **DOM**을 다룰일이 많아졌습니다.
+* 2004년 : 비동기 방식의 **Ajax**의 등장 대표적으로 Google Maps가 있다. **Ajax** 등장이후 **JSON**이 인기를 끌기시작했습니다. 결과적으로 **DOM**을 다룰일이 많아졌습니다.
 * 2006년 : DOM을 간편하게 할 수 있도록 **JQuery**가 API를 제공하여 Javascript 에게 날개를 달아 주는 시기였습니다.
 * 2007년 : 애플이 [WebKit](https://ko.wikipedia.org/wiki/웹킷)엔진을 소개하였습니다. WebKit은 안드로이드의 메인 엔진이고, iOS의 유일한 엔진으로 모바일 시장을 지배하고 있습니다.
 * 2008년 : 구글 크롬 [**V8**](https://ko.wikipedia.org/wiki/크롬_V8)엔진의 등장으로 자바스크립트의 느리다는 인식을 바꿔주는 큰 발전이있었습니다.
@@ -47,7 +47,7 @@ Runtime time Javascript 즉 Node.js 의 등장으로 Javascript 세계에도 Bun
 
 1. 먼저 Html, CSS 파일은 **HTML 파서**를 통해 **DOM Tree**를 만들어 집니다. 뒤에서 배우겠지만 DOM 에 접근하기 위해서는 **document** 라는 객체로 접근을 하게되는데 이때 **document** 의 접근이 가능한 이유가 **DOM Tree** 가 만들어 졌기 때문입니다. HTML 파서는 **Script태그**를 만나면 DOM 생성 프로세스를 **중지**하고 **자바스크립트 엔진**에게 제어권한을 넘깁니다. 태그 위치에 따라 DOM 생성이 지연될 수 있습니다.  **\(이와 같은 동작방식 때문에 &lt;/Body&gt; 태그 바로 위쪽에 Script 태그를 붙이는 것 입니다\)**
 2. CSS 같은 경우 **CSS 파서**에 의해 파싱되어 CSS Object Model 트리가 만들어집니다 \([https://developer.mozilla.org/ko/docs/Web/API/CSS\_Object\_Model](https://developer.mozilla.org/ko/docs/Web/API/CSS_Object_Model)\)
-3. 하지만 DOM Tree 만으로는 렌더링을 할 수 없습니다. 우리가 보고있는 면을 만들기 위해서는 **렌더링 트리**라는 것이 필요합니다. 위에서 만들어진 **DOM Tree** 와 **CSSOM** 을 바탕으로 렌더링 트리가 구성됩니다. \(이때 CSSOM 을 바탕으로 화면에 배치가 이루어지고 색상 등 스타일이 입혀집니다. **redraw & repaint** 가 일어납니다\)
+3. 하지만 DOM Tree 만으로는 렌더링을 할 수 없습니다. 우리가 보고있는 면을 만들기 위해서는 **렌더링 트리**라는 것이 필요합니다. 위에서 만들어진 **DOM Tree** 와 **CSSOM** 을 바탕으로 렌더링 트리가 구성됩니다. \(이때 CSSOM 을 바탕으로 화면에 배치가 이루어지고 색상 등 스타일이 입혀집니다. **reflow & repaint \(redraw\)** 가 일어납니다\)
 4. 비로소 우리가 화면을 볼 수 있게 됩니다.
 
 ![&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC758; &#xB3D9;&#xC791; &#xBC29;&#xC2DD; \(&#xCD9C;&#xCC98;: http://d2.naver.com/helloworld/59361\)](https://d2.naver.com/content/images/2015/06/helloworld-59361-3.png)

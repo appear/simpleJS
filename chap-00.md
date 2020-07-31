@@ -76,6 +76,20 @@ Runtime time Javascript 즉 Node.js 의 등장으로 Javascript 세계에도 Bun
 virtual DOM \(가상돔\) 이란 상태에 따라 변화되는 UI 의 상태를 Object 형태의 DOM Tree 를 만들어 메모리에 저장하고 실제 DOM 과 동기화 시키는 방식의 프로그래밍 개념입니다.  
 
 * 참고자료: [https://www.youtube.com/watch?v=BYbgopx44vo](https://www.youtube.com/watch?v=BYbgopx44vo) 
+* 
+### SPA  \(Single Page Application\)
+
+SPA 란 말 그대로 단일 페이지 어플리케이션 입니다. 하나의 html 파일과 단일 JS 파일로 이루어져 있습니다.  
+최초 로딩 시에 html 파일과 JS 을 미리 로딩하여 페이지 전환이 될 경우 페이지를 이동하는 것이 아닌 전환될 부분만 그려줍니다.
+
+아래의 이미지를 보면 페이지를 이동하였으나 페이지 전체가 새로 로딩되는 것이 아니라 보여줘야 할 페이지의 부분을 새로 그려주면 페이지를 전환 같은 효과를 보여줍니다.  
+
+
+![](.gitbook/assets/webtoon.gif)
+
+SPA 로 페이지를 구성하게 되면 빠른 페이지변환과 반응성, 화면전환 애니메이션 등 사용자 친화적인 부분과 적은 트래픽 양을 누릴 수 있습니다.  
+하지만 장점만 있는 것은 아닙니다. 위에서 말씀드렸던 것 처럼 최초 로딩 시에 JS 파일을 가져와야 하는데 JS 의 사이즈가 커수록 초기 로딩속도는 느려집니다. \(이를 해결하기 위해 뒤에서 code-splitting 에 대하여 알아볼 예정입니다\)  
+또,  검색엔진이 해당 페이지를 크롤 했을 때는 페이지가 그려지기 전이기 때문에 텅 빈 div 태그만 노출됩니다. 이를 해결하기 위해서는 meta tag 를 이용하거나 nuxt 같은 서버사이드 렌더링 프레임워크를 이용해야 합니다.
 
 ### Component  <a id="component"></a>
 
@@ -90,20 +104,6 @@ jQuery 시절에 아래의 페이지를 구성해야 했다면 하나의 html �
 ![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-LYGyJlfT4aHSW1TgIhy%2F-LYGyavI6j95eFiGxste%2F-LYH2dzRo_T9G8ynoPBk%2Fmain.PNG?alt=media&token=42f140f4-8717-4105-8d3b-2759206f0c8b)
 
 
-
-### SPA  \(Single Page Application\)
-
-SPA 란 말 그대로 단일 페이지 어플리케이션 입니다. 하나의 html 파일과 단일 JS 파일로 이루어져 있습니다.  
-최초 로딩 시에 html 파일과 JS 을 미리 로딩하여 페이지 전환이 될 경우 페이지를 이동하는 것이 아닌 전환될 부분만 그려줍니다.
-
-아래의 이미지를 보면 페이지를 이동하였으나 페이지 전체가 새로 로딩되는 것이 아니라 보여줘야 할 페이지의 부분을 새로 그려주면 페이지를 전환 같은 효과를 보여줍니다.  
-
-
-![](.gitbook/assets/webtoon.gif)
-
-SPA 로 페이지를 구성하게 되면 빠른 페이지변환과 반응성, 화면전환 애니메이션 등 사용자 친화적인 부분과 적은 트래픽 양을 누릴 수 있습니다.  
-하지만 장점만 있는 것은 아닙니다. 위에서 말씀드렸던 것 처럼 최초 로딩 시에 JS 파일을 가져와야 하는데 JS 의 사이즈가 커수록 초기 로딩속도는 느려집니다. \(이를 해결하기 위해 뒤에서 code-splitting 에 대하여 알아볼 예정입니다\)  
-또,  검색엔진이 해당 페이지를 크롤 했을 때는 페이지가 그려지기 전이기 때문에 텅 빈 div 태그만 노출됩니다. 이를 해결하기 위해서는 meta tag 를 이용하거나 nuxt 같은 서버사이드 렌더링 프레임워크를 이용해야 합니다.
 
 
 
